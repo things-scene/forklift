@@ -1,5 +1,21 @@
 var { Component, Ellipse } = scene
 
+var getCurrentScript = function () {
+  if (document.currentScript) {
+    return document.currentScript.src;
+  } else {
+    var scripts = document.getElementsByTagName('script');
+    return scripts[scripts.length-1].src;
+
+  }
+};
+
+var getCurrentScriptPath = function () {
+  var script = getCurrentScript();
+  var path = script.substring(0, script.lastIndexOf('/'));
+  return path;
+};
+
 export default class Forklift extends Ellipse {
 
   _draw(context) {
@@ -7,7 +23,6 @@ export default class Forklift extends Ellipse {
       imageNumber = 1,
       hidden = false,
       fillStyle = '#389fdb',
-      depth,
       cx,
       cy,
       rx,
@@ -27,7 +42,8 @@ export default class Forklift extends Ellipse {
       this.model.fillStyle = {
         type: 'pattern',
         fitPattern: true,
-        image: '../images/' + imageNumber + '.png'
+//        image: '../images/' + imageNumber + '.png'
+        image: `${getCurrentScriptPath()}images/${imageNumber}.png`
       }
       this.drawFill(context)
     }
@@ -35,4 +51,5 @@ export default class Forklift extends Ellipse {
 
   get controls(){}
 }
+
 Component.register('forklift', Forklift)
