@@ -1,6 +1,9 @@
 var { Component, Ellipse } = scene
 
 export default class Forklift extends Ellipse {
+  is3dish() {
+    return true
+  }
 
   _draw(context) {
     var {
