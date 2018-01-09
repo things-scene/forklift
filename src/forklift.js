@@ -1,20 +1,28 @@
 /*
  * Copyright © HatioLab Inc. All rights reserved.
  */
-var { Component, Ellipse } = scene
+var { Component, RectPath, Shape  } = scene
 
-export default class Forklift extends Ellipse {
+export default class Forklift extends RectPath(Shape) {
   is3dish() {
     return true
   }
 
   _draw(context) {
     var {
-      cx,
-      cy,
-      rx,
-      ry
-    } = this.model;
+      left,
+      top,
+      width,
+      height
+    } = this.bounds;
+
+    var {
+      x: cx,
+      y: cy
+    } = this.center
+
+    var rx = width / 2
+    var ry = height / 2
 
     context.beginPath()
     context.ellipse(cx, cy, rx, ry, 0, 0, Math.PI * 2)
