@@ -3,6 +3,18 @@
  */
 var { Component, RectPath, Shape  } = scene
 
+const NATURE = {
+  mutable: false,
+  resizable: true,
+  rotatable: true,
+  properties: [{
+    type: 'number',
+    label: 'depth',
+    name: 'depth',
+    property: 'depth'
+  }]
+}
+
 export default class Forklift extends RectPath(Shape) {
   is3dish() {
     return true
@@ -39,6 +51,10 @@ export default class Forklift extends RectPath(Shape) {
       // image: '../images/' + imageNumber + '.png'
     }
     this.drawFill(context)
+  }
+
+  get nature() {
+    return NATURE
   }
 }
 
