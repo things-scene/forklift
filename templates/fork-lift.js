@@ -3,7 +3,7 @@ var icon = '';
 export default {
   type: 'forklift',
   description: 'Fork Lift',
-  group: '3D',
+  group: 'warehouse',
   /* line|shape|textAndMedia|chartAndGauge|table|container|dataSource|IoT|3D|warehouse|form|etc */
   icon,
   model: {
